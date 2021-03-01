@@ -1,0 +1,21 @@
+//colors
+:root {
+	--white-color: #fbfbfb;
+	--black-color: #050505;
+	--grey-color: #cdcdcd;
+	--green-color: #c2eabd;
+	--red-color: #ed254e;
+	--yellow-color: #f9dc5c;
+	--primary-color: #035e7b;
+}
+$white: var(--white-color);
+$black: var(--black-color);
+$grey: var(--grey-color);
+$green: var(--green-color);
+$red: var(--red-color);
+$yellow: var(--yellow-color);
+$primary: var(--primary-color);
+
+//fonts
+$jose: "Josefin Sans", sans-serif;
+$rale: "Raleway", sans-serif;
