@@ -37,3 +37,13 @@ a {
 .container {
 	@extend %container;
 }
+
+.menu_open {
+	overflow: hidden;
+}
+.main_content {
+	padding-top: 4.6rem;
+	@include media-max("425px") {
+		padding-top: 7.1rem;
+	}
+}

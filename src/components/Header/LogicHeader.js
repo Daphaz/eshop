@@ -17,6 +17,7 @@ export default function LogicHeader() {
 		if (!toggle) {
 			const activeContainer = () => {
 				menuContainer.current.style.display = "block";
+				document.body.classList.add("menu_open");
 			};
 			tl.add({
 				targets: ".menu_bg",
@@ -34,6 +35,7 @@ export default function LogicHeader() {
 		} else {
 			const inactiveContainer = () => {
 				menuContainer.current.style.display = "none";
+				document.body.classList.remove("menu_open");
 			};
 			tl.add({
 				targets: ".menu_bg",
