@@ -64,6 +64,9 @@ a {
 .container {
 	@extend %container;
 }
+.row {
+	@extend %flex-center;
+}
 
 .menu_open {
 	overflow: hidden;
