@@ -4,6 +4,9 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
 }
 html {
 	font-size: 16px;
@@ -13,6 +16,7 @@ body {
 	font-family: $rale;
 	background-color: $white;
 	color: $black;
+	overflow-x: hidden;
 }
 
 h1,
@@ -31,4 +35,42 @@ ul {
 a {
 	color: inherit;
 	text-decoration: none;
+	position: relative;
+	&::after,
+	&::before {
+		content: "";
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		width: 0%;
+		border-bottom: 2px solid $primary;
+		transition: width 0.3s ease;
+	}
+	&::before {
+		left: 0;
+	}
+	&:hover {
+		&::after {
+			width: 100%;
+			left: 0;
+		}
+		&::before {
+			width: 100%;
+			right: 0;
+		}
+	}
+}
+
+.container {
+	@extend %container;
+}
+
+.menu_open {
+	overflow: hidden;
+}
+.main_content {
+	padding-top: 4.6rem;
+	@include media-max("425px") {
+		padding-top: 7.1rem;
+	}
 }
