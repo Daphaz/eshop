@@ -4,6 +4,7 @@ import Home from "./routes/home";
 import Products from "./routes/products";
 import Contact from "./routes/contact";
 import Cart from "./routes/cart";
+import FourOneFour from "./routes/FourOneFour";
 
 const routes = [
 	{
@@ -31,6 +32,7 @@ const App = () => {
 				{routes.map(({ path, Component }, i) => (
 					<Route key={i} exact path={path} component={Component} />
 				))}
+				<FourOneFour />
 			</Switch>
 		</div>
 	);

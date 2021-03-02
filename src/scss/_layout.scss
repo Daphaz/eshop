@@ -98,3 +98,40 @@ body::-webkit-scrollbar-thumb {
 	border-radius: 6px;
 	border: 3px solid $white;
 }
+
+/*FourOneFour*/
+.fourOneFour {
+	height: 100vh;
+	@extend %flex-center;
+	flex-direction: column;
+	.row {
+		margin-bottom: 1rem;
+		h4 {
+			font-size: 2rem;
+			color: $primary;
+			line-height: 100%;
+		}
+		span {
+			display: block;
+			width: 5px;
+			height: 2rem;
+			border-radius: 5px;
+			margin: 0 0.5rem;
+			background-color: $black;
+		}
+		p {
+			font-size: 1.2rem;
+			font-weight: bold;
+		}
+		a {
+			font-size: 1.5rem;
+			font-weight: bold;
+			border: 1px solid $black;
+			padding: 0.2rem 0.5rem;
+			transition: border 0.1s ease-in-out;
+			&:hover {
+				border-color: transparent;
+			}
+		}
+	}
+}
