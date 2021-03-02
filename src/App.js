@@ -13,8 +13,10 @@ const App = () => {
 	return (
 		<div className="App">
 			<Switch>
-				{routes.map((route, i) => (
-					<Route key={i} exact path={route.path} component={route.Component} />
+				{routes.map(({ path, Component }, i) => (
+					<Route key={i} exact path={path}>
+						<Component />
+					</Route>
 				))}
 			</Switch>
 		</div>
