@@ -6,8 +6,13 @@ import { AiOutlineUser } from "react-icons/ai";
 import { BiMenuAltRight } from "react-icons/bi";
 import LogicHeader from "./LogicHeader";
 
-export const Header = () => {
+export const Header = ({ history }) => {
 	const { handleClick, menuContainer } = LogicHeader();
+
+	const redirectRoute = (url) => {
+		history.push(url);
+	};
+
 	return (
 		<>
 			<div className="menu_sm">
@@ -19,21 +24,27 @@ export const Header = () => {
 				<div className="menu_bg"></div>
 				<div className="menu_mobile">
 					<ul>
-						<li>Products</li>
-						<li>Contact</li>
+						<li>
+							<Link to="/products">Products</Link>
+						</li>
+						<li>
+							<Link to="/contact">Contact</Link>
+						</li>
 					</ul>
 				</div>
 			</div>
 			<header className="header">
 				<div className="container">
-					<div className="logo">Eshop.</div>
+					<div className="logo" onClick={() => redirectRoute("/")}>
+						Eshop.
+					</div>
 					<nav className="menu_xl">
 						<ul>
 							<li>
-								<Link>Products</Link>
+								<Link to="/products">Products</Link>
 							</li>
 							<li>
-								<Link>Contact</Link>
+								<Link to="/contact">Contact</Link>
 							</li>
 						</ul>
 						<div className="search-container">
@@ -41,7 +52,7 @@ export const Header = () => {
 						</div>
 					</nav>
 					<div className="btn-container">
-						<button className="btn">
+						<button className="btn" onClick={() => redirectRoute("/cart")}>
 							<AiOutlineShoppingCart />
 						</button>
 						<button className="btn">

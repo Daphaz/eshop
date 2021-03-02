@@ -2,14 +2,12 @@ import React from "react";
 import { Layout } from "../../components/Layout";
 import { Title } from "../../components/Title";
 
-const Home = ({ history }) => {
+const Cart = ({ history }) => {
 	return (
 		<Layout history={history}>
-			<div style={{ height: 300 }}>
-				<Title title="Home" subtitle="test" />
-			</div>
+			<Title title="cart" />
 		</Layout>
 	);
 };
 
-export default Home;
+export default Cart;
