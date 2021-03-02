@@ -74,3 +74,24 @@ a {
 		padding-top: 7.1rem;
 	}
 }
+
+/* Scroll Bar */
+* {
+	scrollbar-width: thin;
+	scrollbar-color: $primary $white;
+}
+body::-webkit-scrollbar {
+	width: 11px;
+}
+body {
+	scrollbar-width: thin;
+	scrollbar-color: $primary $white;
+}
+body::-webkit-scrollbar-track {
+	background: $white;
+}
+body::-webkit-scrollbar-thumb {
+	background-color: $primary;
+	border-radius: 6px;
+	border: 3px solid $white;
+}
