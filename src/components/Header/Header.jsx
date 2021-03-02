@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { SearchBar } from "../SearchBar";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { AiOutlineUser } from "react-icons/ai";
@@ -18,10 +19,8 @@ export const Header = () => {
 				<div className="menu_bg"></div>
 				<div className="menu_mobile">
 					<ul>
-						<li>Product</li>
+						<li>Products</li>
 						<li>Contact</li>
-						<li>Cart</li>
-						<li>Login</li>
 					</ul>
 				</div>
 			</div>
@@ -30,8 +29,12 @@ export const Header = () => {
 					<div className="logo">Eshop.</div>
 					<nav className="menu_xl">
 						<ul>
-							<li>Product</li>
-							<li>Contact</li>
+							<li>
+								<Link>Products</Link>
+							</li>
+							<li>
+								<Link>Contact</Link>
+							</li>
 						</ul>
 						<div className="search-container">
 							<SearchBar />

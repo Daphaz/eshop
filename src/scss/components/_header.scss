@@ -8,13 +8,13 @@
 	@include media-max("800px") {
 		padding-right: 48px;
 	}
-	@include media-max("425px") {
+	@include media-max("500px") {
 		padding-right: 0;
 	}
 	.container {
 		@extend %flex-between;
 		height: 100%;
-		@include media-max("425px") {
+		@include media-max("500px") {
 			flex-wrap: wrap;
 		}
 	}
@@ -32,7 +32,7 @@
 		@include media-max("800px") {
 			margin-left: 0;
 		}
-		@include media-max("425px") {
+		@include media-max("500px") {
 			order: 3;
 			margin-top: 1rem;
 		}
@@ -44,6 +44,7 @@
 			}
 			li {
 				margin: 0 0.5rem;
+				font-weight: bold;
 			}
 		}
 		.search-container {
@@ -54,9 +55,6 @@
 	.btn-container {
 		@extend %flex-align;
 		justify-content: flex-end;
-		@include media-max("800px") {
-			display: none;
-		}
 		button {
 			@extend %flex-center;
 			width: 40px;
@@ -67,13 +65,45 @@
 			color: $primary;
 			background-color: $white;
 		}
+		button:first-child {
+			position: relative;
+			&:hover {
+				&::after {
+					transform: scale(1.1) rotate(-30deg);
+				}
+			}
+		}
+		button:first-child::after {
+			@extend %flex-center;
+			content: "1";
+			font-size: 0.6rem;
+			font-weight: bold;
+			vertical-align: middle;
+			line-height: normal;
+			position: absolute;
+			top: -5px;
+			left: -10px;
+			width: 20px;
+			height: 20px;
+			border-radius: 50%;
+			background-color: $red;
+			color: $white;
+			box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.25);
+			transition: transform 0.1s ease;
+		}
 		button:last-child {
 			margin-left: 1rem;
+			@include media-max("800px") {
+				margin-left: 0.5rem;
+			}
+			@include media-max("500px") {
+				margin-right: 48px;
+			}
 		}
 	}
 }
 .menu_sm {
-	position: absolute;
+	position: fixed;
 	top: 1rem;
 	right: 1rem;
 	display: none;
@@ -81,9 +111,6 @@
 	z-index: 10;
 	@include media-max("800px") {
 		display: block;
-	}
-	@include media-max("425px") {
-		top: 0.5rem;
 	}
 	button {
 		@extend %flex-center;
@@ -111,8 +138,8 @@
 	z-index: 5;
 	.menu_bg {
 		position: absolute;
-		top: 1rem;
-		right: 1rem;
+		top: 1.25rem;
+		right: 1.25rem;
 		width: 30px;
 		height: 30px;
 		border-radius: 50%;
