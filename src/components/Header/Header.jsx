@@ -7,7 +7,7 @@ import { BiMenuAltRight } from "react-icons/bi";
 import LogicHeader from "./LogicHeader";
 
 export const Header = ({ history }) => {
-	const { handleClick, menuContainer } = LogicHeader();
+	const { handleClick, menuContainer, removeClassBody } = LogicHeader();
 
 	const redirectRoute = (url) => {
 		history.push(url);
@@ -25,10 +25,14 @@ export const Header = ({ history }) => {
 				<div className="menu_mobile">
 					<ul>
 						<li>
-							<Link to="/products">Products</Link>
+							<Link to="/products" onClick={removeClassBody}>
+								Produits
+							</Link>
 						</li>
 						<li>
-							<Link to="/contact">Contact</Link>
+							<Link to="/contact" onClick={removeClassBody}>
+								Contact
+							</Link>
 						</li>
 					</ul>
 				</div>
@@ -41,7 +45,7 @@ export const Header = ({ history }) => {
 					<nav className="menu_xl">
 						<ul>
 							<li>
-								<Link to="/products">Products</Link>
+								<Link to="/products">Produits</Link>
 							</li>
 							<li>
 								<Link to="/contact">Contact</Link>

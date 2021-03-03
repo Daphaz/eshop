@@ -54,8 +54,13 @@ export default function LogicHeader() {
 		setToggle(!toggle);
 	};
 
+	const removeClassBody = () => {
+		document.body.classList.remove("menu_open");
+	};
+
 	return {
 		handleClick,
 		menuContainer,
+		removeClassBody,
 	};
 }
