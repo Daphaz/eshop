@@ -7,7 +7,7 @@ const Products = ({ history, lesProduits }) => {
 	return (
 		<Layout history={history}>
 			<Title title="nos" subtitle="produits" />
-			<ProductList lesProduits={lesProduits} />
+			<ProductList lesProduits={lesProduits} history={history} />
 		</Layout>
 	);
 };

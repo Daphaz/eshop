@@ -1,35 +1,32 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { priceFormatted } from "../helpers/price";
 import { AiFillEye, AiOutlineShopping } from "react-icons/ai";
+import { PriceComponent } from "../helpers/price";
 
-export const Product = ({ informations }) => {
+export const Product = ({ informations, handleClick }) => {
 	const { title, img, price, promo } = informations;
-	const pricePromo = ((100 - promo) / 100) * price;
+
 	return (
 		<div className="product_card">
 			<div className="product_img">
-				<Link to="/">
-					<img src={img} alt={title} width="100%" />
-					{promo > 0 && (
-						<div className="promo_container">
-							<span className="product_promo-label">promo</span>
-							<span className="product_promo-unit">- {promo}%</span>
-						</div>
-					)}
-				</Link>
+				<img
+					src={img}
+					alt={title}
+					width="100%"
+					height="100%"
+					onClick={handleClick}
+				/>
+				{promo > 0 && (
+					<div className="promo_container">
+						<span className="product_promo-label">promo</span>
+						<span className="product_promo-unit">- {promo}%</span>
+					</div>
+				)}
 			</div>
 			<div className="product_content">
 				<h4 className="product_content-title">{title}</h4>
 				<div className="product_content-price">
-					{promo > 0 ? (
-						<>
-							<div className="first_price">{priceFormatted(pricePromo)}</div>
-							<div className="second_price">{priceFormatted(price)}</div>
-						</>
-					) : (
-						<div className="first_price">{priceFormatted(price)}</div>
-					)}
+					<PriceComponent price={price} promo={promo} />
 				</div>
 				<div className="actionBtn">
 					<Link to="/">
