@@ -5,6 +5,7 @@ import Products from "./routes/products";
 import Contact from "./routes/contact";
 import Cart from "./routes/cart";
 import FourOneFour from "./routes/FourOneFour";
+import { connect } from "react-redux";
 
 const routes = [
 	{
@@ -25,7 +26,13 @@ const routes = [
 	},
 ];
 
-const App = () => {
+const mapStateToProps = (state) => {
+	return {
+		lesProduits: state.Products,
+	};
+};
+
+const App = ({ lesProduits }) => {
 	return (
 		<div className="App">
 			<Switch>
@@ -38,4 +45,4 @@ const App = () => {
 	);
 };
 
-export default App;
+export default connect(mapStateToProps)(App);
