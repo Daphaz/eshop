@@ -4,16 +4,17 @@
 	top: 0;
 	left: 0;
 	background-color: $primary;
-	color: $white;
+	color: transparent;
 	font-weight: bold;
 	text-transform: uppercase;
 	z-index: 1;
-	padding: 0.5rem 0;
+	padding: 0.1rem 0;
 	overflow: hidden;
 	span {
 		white-space: nowrap;
 		font-size: 50px;
 		animation: scrollTxt 25s linear infinite;
+		-webkit-text-stroke: 1px $white;
 	}
 	@include media-max("1440px") {
 		display: none;
