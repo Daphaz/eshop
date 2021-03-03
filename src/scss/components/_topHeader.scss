@@ -1,0 +1,30 @@
+.topHeader {
+	display: flex;
+	position: sticky;
+	top: 0;
+	left: 0;
+	background-color: $primary;
+	color: $white;
+	font-weight: bold;
+	text-transform: uppercase;
+	z-index: 1;
+	padding: 0.5rem 0;
+	overflow: hidden;
+	span {
+		white-space: nowrap;
+		font-size: 50px;
+		animation: scrollTxt 25s linear infinite;
+	}
+	@include media-max("1440px") {
+		display: none;
+	}
+}
+
+@keyframes scrollTxt {
+	0% {
+		transform: translate(-100%, 0);
+	}
+	100% {
+		transform: translate(0, 0);
+	}
+}
