@@ -7,25 +7,6 @@ import Cart from "./routes/cart";
 import FourOneFour from "./routes/FourOneFour";
 import { connect } from "react-redux";
 
-const routes = [
-	{
-		path: "/",
-		Component: Home,
-	},
-	{
-		path: "/products",
-		Component: Products,
-	},
-	{
-		path: "/contact",
-		Component: Contact,
-	},
-	{
-		path: "/cart",
-		Component: Cart,
-	},
-];
-
 const mapStateToProps = (state) => {
 	return {
 		lesProduits: state.Products,
@@ -33,12 +14,22 @@ const mapStateToProps = (state) => {
 };
 
 const App = ({ lesProduits }) => {
+	const { lesProduits: products } = lesProduits;
 	return (
 		<div className="App">
 			<Switch>
-				{routes.map(({ path, Component }, i) => (
-					<Route key={i} exact path={path} component={Component} />
-				))}
+				<Route
+					exact
+					path="/"
+					component={(props) => <Home lesProduits={products} {...props} />}
+				/>
+				<Route
+					exact
+					path="/products"
+					component={(props) => <Products lesProduits={products} {...props} />}
+				/>
+				<Route exact path="/contact" component={Contact} />
+				<Route exact path="/cart" component={Cart} />
 				<FourOneFour />
 			</Switch>
 		</div>
