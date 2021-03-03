@@ -3,9 +3,12 @@ import { Layout } from "../../components/Layout";
 import { ProductDetail } from "../../components/ProductDetail";
 
 const Detail = ({ history }) => {
+	const goBack = () => {
+		history.goBack();
+	};
 	return (
 		<Layout history={history}>
-			<ProductDetail produit={history.location.state} />
+			<ProductDetail produit={history.location.state} goBack={goBack} />
 		</Layout>
 	);
 };

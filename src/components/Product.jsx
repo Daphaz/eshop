@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { AiFillEye, AiOutlineShopping } from "react-icons/ai";
 import { PriceComponent } from "../helpers/price";
 
@@ -29,12 +28,12 @@ export const Product = ({ informations, handleClick }) => {
 					<PriceComponent price={price} promo={promo} />
 				</div>
 				<div className="actionBtn">
-					<Link to="/">
+					<div className="action" onClick={handleClick}>
 						<AiFillEye />
-					</Link>
-					<Link to="/">
+					</div>
+					<div className="action">
 						<AiOutlineShopping />
-					</Link>
+					</div>
 				</div>
 			</div>
 		</div>

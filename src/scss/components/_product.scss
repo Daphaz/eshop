@@ -53,7 +53,8 @@
 .actionBtn {
 	@extend %flex-center;
 	padding: 0.5rem 0;
-	a {
+	.action {
+		cursor: pointer;
 		@extend %flex-center;
 		width: 40px;
 		height: 40px;

@@ -1,13 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { AiOutlineRollback, AiOutlineShopping } from "react-icons/ai";
 import { PriceComponent } from "../helpers/price";
 
-export const ProductDetail = ({ produit }) => {
-	const { title, img, price, info, promo } = produit;
+export const ProductDetail = ({ produit, goBack }) => {
+	const { title, img, price, info, promo } = { ...produit };
+
 	return (
 		<>
-			{produit && (
+			{produit ? (
 				<div className="product_detail">
 					<div className="detail_content">
 						<img src={img} alt={title} />
@@ -19,15 +20,17 @@ export const ProductDetail = ({ produit }) => {
 							<PriceComponent price={price} promo={promo} />
 						</div>
 						<div className="actionBtn">
-							<Link to="/">
+							<div className="action">
 								<AiOutlineShopping />
-							</Link>
-							<Link to="/">
+							</div>
+							<div className="action" onClick={goBack}>
 								<AiOutlineRollback />
-							</Link>
+							</div>
 						</div>
 					</div>
 				</div>
+			) : (
+				<Redirect to="/home" />
 			)}
 		</>
 	);
