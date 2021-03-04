@@ -100,9 +100,8 @@
 				}
 			}
 		}
-		button:first-child::after {
+		.count_item {
 			@extend %flex-center;
-			content: "1";
 			font-size: 0.6rem;
 			font-weight: bold;
 			vertical-align: middle;

@@ -2,9 +2,9 @@ import React from "react";
 import { Layout } from "../../components/Layout";
 import { Title } from "../../components/Title";
 
-const Contact = ({ history }) => {
+const Contact = ({ history, nbProduit }) => {
 	return (
-		<Layout history={history}>
+		<Layout history={history} nbProduit={nbProduit}>
 			<Title title="contact" subtitle="us" />
 		</Layout>
 	);

@@ -6,7 +6,7 @@ import { AiOutlineUser } from "react-icons/ai";
 import { BiMenuAltRight } from "react-icons/bi";
 import LogicHeader from "./LogicHeader";
 
-export const Header = ({ history }) => {
+export const Header = ({ history, nbProduit }) => {
 	const { handleClick, menuContainer, removeClassBody } = LogicHeader();
 
 	const redirectRoute = (url) => {
@@ -57,6 +57,7 @@ export const Header = ({ history }) => {
 					</nav>
 					<div className="btn-container">
 						<button className="btn" onClick={() => redirectRoute("/cart")}>
+							{nbProduit > 0 && <div className="count_item">{nbProduit}</div>}
 							<AiOutlineShoppingCart />
 						</button>
 						<button className="btn">

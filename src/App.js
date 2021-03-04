@@ -25,7 +25,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 const App = ({ lesProduits, lesProduitInCart, addToCart, removeToCart }) => {
 	const { lesProduits: products } = lesProduits;
-	const { lesProduitsInCart } = lesProduitInCart;
+	const { lesProduitsInCart, nbProduit } = lesProduitInCart;
 	return (
 		<div className="App">
 			<Switch>
@@ -33,31 +33,55 @@ const App = ({ lesProduits, lesProduitInCart, addToCart, removeToCart }) => {
 					exact
 					path="/home"
 					component={(props) => (
-						<Home lesProduits={products} addToCart={addToCart} {...props} />
+						<Home
+							lesProduits={products}
+							addToCart={addToCart}
+							nbProduit={nbProduit}
+							{...props}
+						/>
 					)}
 				/>
 				<Route
 					exact
 					path="/home/:id"
 					component={(props) => (
-						<Detail lesProduits={products} addToCart={addToCart} {...props} />
+						<Detail
+							lesProduits={products}
+							addToCart={addToCart}
+							nbProduit={nbProduit}
+							{...props}
+						/>
 					)}
 				/>
 				<Route
 					exact
 					path="/products"
 					component={(props) => (
-						<Products lesProduits={products} addToCart={addToCart} {...props} />
+						<Products
+							lesProduits={products}
+							addToCart={addToCart}
+							nbProduit={nbProduit}
+							{...props}
+						/>
 					)}
 				/>
 				<Route
 					exact
 					path="/products/:id"
 					component={(props) => (
-						<Detail lesProduits={products} addToCart={addToCart} {...props} />
+						<Detail
+							lesProduits={products}
+							addToCart={addToCart}
+							nbProduit={nbProduit}
+							{...props}
+						/>
 					)}
 				/>
-				<Route exact path="/contact" component={Contact} />
+				<Route
+					exact
+					path="/contact"
+					component={(props) => <Contact nbProduit={nbProduit} {...props} />}
+				/>
 				<Route
 					exact
 					path="/cart"
@@ -65,6 +89,7 @@ const App = ({ lesProduits, lesProduitInCart, addToCart, removeToCart }) => {
 						<Cart
 							lesProduitsInCart={lesProduitsInCart}
 							removeToCart={removeToCart}
+							nbProduit={nbProduit}
 							{...props}
 						/>
 					)}

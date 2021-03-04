@@ -3,11 +3,11 @@ import { Header } from "./Header/Header";
 import { TopHeader } from "./TopHeader";
 import { Footer } from "./Footer";
 
-export const Layout = ({ children, history }) => {
+export const Layout = ({ children, history, nbProduit }) => {
 	return (
 		<>
 			<TopHeader />
-			<Header history={history} />
+			<Header history={history} nbProduit={nbProduit} />
 			<main className="container main_content">{children}</main>
 			<Footer />
 		</>
