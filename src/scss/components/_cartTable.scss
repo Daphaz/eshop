@@ -1,0 +1,19 @@
+.cart_container {
+	@extend %flex-center;
+	flex-direction: column;
+	margin: 0 auto;
+	.cart_label {
+		text-align: center;
+		display: grid;
+		grid-template-columns: repeat(6, 1fr);
+		width: 100%;
+		font-size: 1rem;
+		font-weight: bold;
+		text-transform: uppercase;
+		margin-bottom: 2rem;
+		max-width: 1440px;
+		@include media-max("905px") {
+			display: none;
+		}
+	}
+}

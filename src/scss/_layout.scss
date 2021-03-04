@@ -48,6 +48,7 @@ a {
 }
 .main_content {
 	padding-top: 4.6rem;
+	height: 100%;
 	@include media-max("500px") {
 		padding-top: 8.6rem;
 	}

@@ -1,11 +1,15 @@
 import React from "react";
 import { Layout } from "../../components/Layout";
 import { Title } from "../../components/Title";
+import { CartTable } from "../../components/CartTable";
 
 const Cart = ({ history }) => {
 	return (
 		<Layout history={history}>
-			<Title title="cart" />
+			<div className="container">
+				<Title title="votre" subtitle="panier" />
+				<CartTable />
+			</div>
 		</Layout>
 	);
 };
