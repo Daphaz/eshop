@@ -14,8 +14,10 @@ export const CartFooter = () => {
 					</span>
 				</div>
 			</div>
-			<button className="btn achat">Poursuivre mes achats</button>
-			<button className="btn commande">Valider ma commande</button>
+			<div className="btn_link">
+				<button className="btn achat">Poursuivre mes achats</button>
+				<button className="btn commande">Valider ma commande</button>
+			</div>
 		</div>
 	);
 };
