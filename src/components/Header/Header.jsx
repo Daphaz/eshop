@@ -1,16 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { SearchBar } from "../SearchBar";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { AiOutlineUser } from "react-icons/ai";
 import { BiMenuAltRight } from "react-icons/bi";
 import LogicHeader from "./LogicHeader";
+import { Modal } from "../Modal";
+import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 
 export const Header = ({ history, nbProduit }) => {
+	const [seePass, setSeePass] = useState(true);
+	const [isOpen, setIsOpen] = useState(false);
 	const { handleClick, menuContainer, removeClassBody } = LogicHeader();
+
+	const handleOpen = () => {
+		setIsOpen(!isOpen);
+	};
 
 	const redirectRoute = (url) => {
 		history.push(url);
+	};
+
+	const handleSeePass = () => {
+		setSeePass(!seePass);
 	};
 
 	return (
@@ -60,12 +72,49 @@ export const Header = ({ history, nbProduit }) => {
 							{nbProduit > 0 && <div className="count_item">{nbProduit}</div>}
 							<AiOutlineShoppingCart />
 						</button>
-						<button className="btn">
+						<button className="btn" onClick={handleOpen}>
 							<AiOutlineUser />
 						</button>
 					</div>
 				</div>
 			</header>
+			<Modal handleOpen={handleOpen} isOpen={isOpen}>
+				<div className="modal_header">
+					<h3>Se connecter</h3>
+				</div>
+				<form className="login_form">
+					<div className="form_group">
+						<label htmlFor="username">Nom d'utilisateur</label>
+						<input type="text" name="username" id="username" required />
+					</div>
+					<div className="form_group">
+						<label htmlFor="password">Nom d'utilisateur</label>
+						<div className="form_control">
+							<input
+								className="password"
+								type={seePass ? "password" : "text"}
+								name="password"
+								id="password"
+								required
+							/>
+							<button className="btn" onClick={handleSeePass}>
+								{seePass ? <AiFillEyeInvisible /> : <AiFillEye />}
+							</button>
+						</div>
+					</div>
+					<div className="form_group">
+						<div className="form_control">
+							<input type="checkbox" name="remember" id="remember" required />
+							<label htmlFor="remember">Se souvenir</label>
+						</div>
+					</div>
+					<div className="btn_row">
+						<button type="submit" className="btn btn_login">
+							connexion
+						</button>
+					</div>
+				</form>
+			</Modal>
 		</>
 	);
 };
