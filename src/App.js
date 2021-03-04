@@ -8,39 +8,62 @@ import Cart from "./routes/cart";
 import FourOneFour from "./routes/FourOneFour";
 import { connect } from "react-redux";
 
+//actions
+import { addToCart } from "./redux/ActionCreator";
+
 const mapStateToProps = (state) => {
 	return {
 		lesProduits: state.Products,
+		lesProduitInCart: state.Cart,
 	};
 };
 
-const App = ({ lesProduits }) => {
+const mapDispatchToProps = (dispatch) => ({
+	addToCart: (product) => dispatch(addToCart(product)),
+});
+
+const App = ({ lesProduits, lesProduitInCart, addToCart }) => {
 	const { lesProduits: products } = lesProduits;
+	const { lesProduitsInCart } = lesProduitInCart;
 	return (
 		<div className="App">
 			<Switch>
 				<Route
 					exact
 					path="/home"
-					component={(props) => <Home lesProduits={products} {...props} />}
+					component={(props) => (
+						<Home lesProduits={products} addToCart={addToCart} {...props} />
+					)}
 				/>
 				<Route
 					exact
 					path="/home/:id"
-					component={(props) => <Detail lesProduits={products} {...props} />}
+					component={(props) => (
+						<Detail lesProduits={products} addToCart={addToCart} {...props} />
+					)}
 				/>
 				<Route
 					exact
 					path="/products"
-					component={(props) => <Products lesProduits={products} {...props} />}
+					component={(props) => (
+						<Products lesProduits={products} addToCart={addToCart} {...props} />
+					)}
 				/>
 				<Route
 					exact
 					path="/products/:id"
-					component={(props) => <Detail lesProduits={products} {...props} />}
+					component={(props) => (
+						<Detail lesProduits={products} addToCart={addToCart} {...props} />
+					)}
 				/>
 				<Route exact path="/contact" component={Contact} />
-				<Route exact path="/cart" component={Cart} />
+				<Route
+					exact
+					path="/cart"
+					component={(props) => (
+						<Cart lesProduitsInCart={lesProduitsInCart} {...props} />
+					)}
+				/>
 				<Redirect exact path="/" to="/home" />
 				<FourOneFour />
 			</Switch>
@@ -48,4 +71,4 @@ const App = ({ lesProduits }) => {
 	);
 };
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

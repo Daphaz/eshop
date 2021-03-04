@@ -63,6 +63,11 @@
 		font-size: 1.3rem;
 		color: $primary;
 		margin: 0 0.5rem;
+		background-color: $white;
+	}
+	button:disabled {
+		cursor: not-allowed;
+		background: $grey;
 	}
 }
 .second_price {

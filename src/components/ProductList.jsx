@@ -1,7 +1,7 @@
 import React from "react";
 import { Product } from "./Product";
 
-export const ProductList = ({ lesProduits, history }) => {
+export const ProductList = ({ lesProduits, history, addToCart }) => {
 	const query = history.location.pathname;
 
 	const handleClick = (p) => {
@@ -14,6 +14,7 @@ export const ProductList = ({ lesProduits, history }) => {
 			{lesProduits &&
 				lesProduits.map((p) => (
 					<Product
+						addToCart={addToCart}
 						informations={p}
 						handleClick={() => handleClick(p)}
 						key={p.id}
