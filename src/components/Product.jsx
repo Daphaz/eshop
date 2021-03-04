@@ -2,8 +2,12 @@ import React from "react";
 import { AiFillEye, AiOutlineShopping } from "react-icons/ai";
 import { PriceComponent } from "../helpers/price";
 
-export const Product = ({ informations, handleClick }) => {
-	const { title, img, price, promo } = informations;
+export const Product = ({ informations, handleClick, addToCart }) => {
+	const { title, img, price, inCart, promo } = informations;
+
+	const handleAddToCart = () => {
+		addToCart(informations);
+	};
 
 	return (
 		<div className="product_card">
@@ -28,12 +32,15 @@ export const Product = ({ informations, handleClick }) => {
 					<PriceComponent price={price} promo={promo} />
 				</div>
 				<div className="actionBtn">
-					<div className="action" onClick={handleClick}>
+					<button className="btn action" onClick={handleClick}>
 						<AiFillEye />
-					</div>
-					<div className="action">
+					</button>
+					<button
+						className="btn action"
+						disabled={inCart}
+						onClick={handleAddToCart}>
 						<AiOutlineShopping />
-					</div>
+					</button>
 				</div>
 			</div>
 		</div>

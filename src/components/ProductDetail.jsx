@@ -3,8 +3,12 @@ import { Redirect } from "react-router-dom";
 import { AiOutlineRollback, AiOutlineShopping } from "react-icons/ai";
 import { PriceComponent } from "../helpers/price";
 
-export const ProductDetail = ({ produit, goBack }) => {
-	const { title, img, price, info, promo } = { ...produit };
+export const ProductDetail = ({ produit, goBack, addToCart }) => {
+	const { title, img, price, info, promo, inCart } = { ...produit };
+
+	const handleAddToCart = () => {
+		addToCart(produit);
+	};
 
 	return (
 		<>
@@ -20,12 +24,15 @@ export const ProductDetail = ({ produit, goBack }) => {
 							<PriceComponent price={price} promo={promo} />
 						</div>
 						<div className="actionBtn">
-							<div className="action">
+							<button
+								className="btn action"
+								disabled={inCart}
+								onClick={handleAddToCart}>
 								<AiOutlineShopping />
-							</div>
-							<div className="action" onClick={goBack}>
+							</button>
+							<button className="btn action" onClick={goBack}>
 								<AiOutlineRollback />
-							</div>
+							</button>
 						</div>
 					</div>
 				</div>
