@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { SearchBar } from "../SearchBar";
 import { AiOutlineShoppingCart } from "react-icons/ai";
@@ -9,20 +9,18 @@ import { Modal } from "../Modal";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 
 export const Header = ({ history, nbProduit }) => {
-	const [seePass, setSeePass] = useState(true);
-	const [isOpen, setIsOpen] = useState(false);
-	const { handleClick, menuContainer, removeClassBody } = LogicHeader();
-
-	const handleOpen = () => {
-		setIsOpen(!isOpen);
-	};
+	const {
+		handleClick,
+		menuContainer,
+		removeClassBody,
+		handleOpen,
+		handleSeePass,
+		isOpen,
+		seePass,
+	} = LogicHeader();
 
 	const redirectRoute = (url) => {
 		history.push(url);
-	};
-
-	const handleSeePass = () => {
-		setSeePass(!seePass);
 	};
 
 	return (

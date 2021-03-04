@@ -5,6 +5,8 @@ import useSize from "../../helpers/context";
 export default function LogicHeader() {
 	const sizes = useSize();
 	const [toggle, setToggle] = useState(false);
+	const [seePass, setSeePass] = useState(true);
+	const [isOpen, setIsOpen] = useState(false);
 
 	const menuContainer = useRef(null);
 
@@ -58,9 +60,21 @@ export default function LogicHeader() {
 		document.body.classList.remove("menu_open");
 	};
 
+	const handleOpen = () => {
+		setIsOpen(!isOpen);
+	};
+
+	const handleSeePass = () => {
+		setSeePass(!seePass);
+	};
+
 	return {
 		handleClick,
 		menuContainer,
 		removeClassBody,
+		handleOpen,
+		isOpen,
+		handleSeePass,
+		seePass,
 	};
 }
