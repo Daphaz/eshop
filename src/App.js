@@ -9,7 +9,12 @@ import FourOneFour from "./routes/FourOneFour";
 import { connect } from "react-redux";
 
 //actions
-import { addToCart, removeToCart } from "./redux/ActionCreator";
+import {
+	addToCart,
+	removeToCart,
+	addQuantity,
+	removeQuantity,
+} from "./redux/ActionCreator";
 
 const mapStateToProps = (state) => {
 	return {
@@ -21,9 +26,18 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
 	addToCart: (product) => dispatch(addToCart(product)),
 	removeToCart: (id) => dispatch(removeToCart(id)),
+	addQuantity: (id) => dispatch(addQuantity(id)),
+	removeQuantity: (id) => dispatch(removeQuantity(id)),
 });
 
-const App = ({ lesProduits, lesProduitInCart, addToCart, removeToCart }) => {
+const App = ({
+	lesProduits,
+	lesProduitInCart,
+	addToCart,
+	removeToCart,
+	addQuantity,
+	removeQuantity,
+}) => {
 	const { lesProduits: products } = lesProduits;
 	const { lesProduitsInCart, nbProduit } = lesProduitInCart;
 	return (
@@ -90,6 +104,8 @@ const App = ({ lesProduits, lesProduitInCart, addToCart, removeToCart }) => {
 							lesProduitsInCart={lesProduitsInCart}
 							removeToCart={removeToCart}
 							nbProduit={nbProduit}
+							addQuantity={addQuantity}
+							removeQuantity={removeQuantity}
 							{...props}
 						/>
 					)}

@@ -24,6 +24,22 @@ export const Cart = (
 				),
 				nbProduit: state.nbProduit - 1,
 			};
+		case ActionType.ADD_QUANTITY:
+			return {
+				...state,
+				lesProduitsInCart: state.lesProduitsInCart.map((p) =>
+					p.id === action.payload.id ? { ...p, count: p.count + 1 } : p
+				),
+			};
+		case ActionType.REMOVE_QUANTITY:
+			return {
+				...state,
+				lesProduitsInCart: state.lesProduitsInCart.map((p) =>
+					p.id === action.payload.id && p.count > 1
+						? { ...p, count: p.count - 1 }
+						: p
+				),
+			};
 		default:
 			return state;
 	}

@@ -1,6 +1,14 @@
 import React from "react";
+import { priceFormatted } from "../helpers/price";
 
-export const CartFooter = ({ history }) => {
+export const CartFooter = ({ history, lesProduitsInCart }) => {
+	const total = lesProduitsInCart.reduce((acc, p) => {
+		const newTotal =
+			p.promo === 0
+				? p.price * p.count
+				: ((100 - p.promo) / 100) * p.price * p.count;
+		return acc + newTotal;
+	}, 0);
 	const returnProduct = () => {
 		history.push("/products");
 	};
@@ -9,7 +17,7 @@ export const CartFooter = ({ history }) => {
 			<div className="total">
 				<div className="total_price">
 					<span>total :&nbsp;</span>
-					<span>253 €</span>
+					<span>{priceFormatted(total)}</span>
 				</div>
 				<div>
 					<span>

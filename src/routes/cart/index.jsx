@@ -3,7 +3,14 @@ import { Layout } from "../../components/Layout";
 import { Title } from "../../components/Title";
 import { CartTable } from "../../components/CartTable";
 
-const Cart = ({ history, lesProduitsInCart, removeToCart, nbProduit }) => {
+const Cart = ({
+	history,
+	lesProduitsInCart,
+	removeToCart,
+	nbProduit,
+	addQuantity,
+	removeQuantity,
+}) => {
 	return (
 		<Layout history={history} nbProduit={nbProduit}>
 			<div className="container">
@@ -12,6 +19,8 @@ const Cart = ({ history, lesProduitsInCart, removeToCart, nbProduit }) => {
 					history={history}
 					lesProduitsInCart={lesProduitsInCart}
 					removeToCart={removeToCart}
+					addQuantity={addQuantity}
+					removeQuantity={removeQuantity}
 				/>
 			</div>
 		</Layout>

@@ -2,7 +2,13 @@ import React from "react";
 import { CartItem } from "./CartItem";
 import { CartFooter } from "./CartFooter";
 
-export const CartTable = ({ history, lesProduitsInCart, removeToCart }) => {
+export const CartTable = ({
+	history,
+	lesProduitsInCart,
+	removeToCart,
+	addQuantity,
+	removeQuantity,
+}) => {
 	return (
 		<>
 			{lesProduitsInCart && (
@@ -33,10 +39,15 @@ export const CartTable = ({ history, lesProduitsInCart, removeToCart }) => {
 								<CartItem
 									lesProduitsInCart={p}
 									removeToCart={removeToCart}
+									addQuantity={addQuantity}
+									removeQuantity={removeQuantity}
 									key={p.id}
 								/>
 							))}
-							<CartFooter history={history} />
+							<CartFooter
+								history={history}
+								lesProduitsInCart={lesProduitsInCart}
+							/>
 						</>
 					) : (
 						<h2>Vous n'avez pas encore de produits dans votre panier</h2>
