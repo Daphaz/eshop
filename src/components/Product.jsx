@@ -6,11 +6,7 @@ export const Product = ({ informations, handleClick, addToCart }) => {
 	const { title, img, price, inCart, promo } = informations;
 
 	const handleAddToCart = () => {
-		if (inCart) {
-			console.log("incart");
-		} else {
-			addToCart(informations);
-		}
+		addToCart(informations);
 	};
 
 	return (

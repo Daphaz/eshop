@@ -2,7 +2,7 @@ import React from "react";
 import { CartItem } from "./CartItem";
 import { CartFooter } from "./CartFooter";
 
-export const CartTable = ({ history, lesProduitsInCart }) => {
+export const CartTable = ({ history, lesProduitsInCart, removeToCart }) => {
 	return (
 		<>
 			{lesProduitsInCart && (
@@ -30,7 +30,11 @@ export const CartTable = ({ history, lesProduitsInCart }) => {
 								</li>
 							</ul>
 							{lesProduitsInCart.map((p) => (
-								<CartItem lesProduitsInCart={p} key={p.id} />
+								<CartItem
+									lesProduitsInCart={p}
+									removeToCart={removeToCart}
+									key={p.id}
+								/>
 							))}
 							<CartFooter history={history} />
 						</>

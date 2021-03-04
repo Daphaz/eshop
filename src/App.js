@@ -9,7 +9,7 @@ import FourOneFour from "./routes/FourOneFour";
 import { connect } from "react-redux";
 
 //actions
-import { addToCart } from "./redux/ActionCreator";
+import { addToCart, removeToCart } from "./redux/ActionCreator";
 
 const mapStateToProps = (state) => {
 	return {
@@ -20,9 +20,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
 	addToCart: (product) => dispatch(addToCart(product)),
+	removeToCart: (id) => dispatch(removeToCart(id)),
 });
 
-const App = ({ lesProduits, lesProduitInCart, addToCart }) => {
+const App = ({ lesProduits, lesProduitInCart, addToCart, removeToCart }) => {
 	const { lesProduits: products } = lesProduits;
 	const { lesProduitsInCart } = lesProduitInCart;
 	return (
@@ -61,7 +62,11 @@ const App = ({ lesProduits, lesProduitInCart, addToCart }) => {
 					exact
 					path="/cart"
 					component={(props) => (
-						<Cart lesProduitsInCart={lesProduitsInCart} {...props} />
+						<Cart
+							lesProduitsInCart={lesProduitsInCart}
+							removeToCart={removeToCart}
+							{...props}
+						/>
 					)}
 				/>
 				<Redirect exact path="/" to="/home" />

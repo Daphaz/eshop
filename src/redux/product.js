@@ -10,6 +10,13 @@ export const Products = (state = { lesProduits: storeProducts }, action) => {
 					p === action.payload.product ? { ...p, inCart: true } : p
 				),
 			};
+		case ActionType.REMOVE_TO_CART:
+			return {
+				...state,
+				lesProduits: state.lesProduits.map((p) =>
+					p.id === action.payload.id ? { ...p, inCart: false } : p
+				),
+			};
 		default:
 			return state;
 	}

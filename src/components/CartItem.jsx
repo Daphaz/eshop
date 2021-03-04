@@ -5,9 +5,13 @@ import {
 	AiOutlineDelete,
 } from "react-icons/ai";
 
-export const CartItem = ({ lesProduitsInCart }) => {
-	const { img, title, price, promo, count } = { ...lesProduitsInCart };
+export const CartItem = ({ lesProduitsInCart, removeToCart }) => {
+	const { id, img, title, price, promo, count } = { ...lesProduitsInCart };
 	let newPrice = promo === 0 ? price : ((100 - promo) / 100) * price;
+
+	const handleDelete = () => {
+		removeToCart(id);
+	};
 
 	return (
 		<div className="cart_item">
@@ -26,7 +30,7 @@ export const CartItem = ({ lesProduitsInCart }) => {
 				</button>
 			</div>
 			<div className="cart_delete">
-				<button className="btn">
+				<button className="btn" onClick={handleDelete}>
 					<AiOutlineDelete />
 				</button>
 			</div>
