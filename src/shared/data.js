@@ -1,18 +1,18 @@
 export const storeCategory = [
 	{
-		name: "chaussure",
+		name: "chaussures",
 		id: 0,
 	},
 	{
-		name: "chemise",
+		name: "chemises",
 		id: 1,
 	},
 	{
-		name: "montre",
+		name: "montres",
 		id: 2,
 	},
 	{
-		name: "telephone",
+		name: "téléphones",
 		id: 3,
 	},
 ];
