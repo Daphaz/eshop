@@ -2,6 +2,7 @@ import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Home from "./routes/home";
 import Products from "./routes/products";
+import Category from "./routes/category";
 import Detail from "./routes/products/Detail";
 import Contact from "./routes/contact";
 import Cart from "./routes/cart";
@@ -20,6 +21,7 @@ const mapStateToProps = (state) => {
 	return {
 		lesProduits: state.Products,
 		lesProduitInCart: state.Cart,
+		Categories: state.storeCategory,
 	};
 };
 
@@ -33,6 +35,7 @@ const mapDispatchToProps = (dispatch) => ({
 const App = ({
 	lesProduits,
 	lesProduitInCart,
+	Categories,
 	addToCart,
 	removeToCart,
 	addQuantity,
@@ -85,6 +88,19 @@ const App = ({
 					component={(props) => (
 						<Detail
 							lesProduits={products}
+							addToCart={addToCart}
+							nbProduit={nbProduit}
+							{...props}
+						/>
+					)}
+				/>
+				<Route
+					exact
+					path="/category/:id"
+					component={(props) => (
+						<Category
+							category={Categories}
+							products={products}
 							addToCart={addToCart}
 							nbProduit={nbProduit}
 							{...props}

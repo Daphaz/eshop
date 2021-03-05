@@ -11,13 +11,11 @@ import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 export const Header = ({ history, nbProduit }) => {
 	const {
 		handleClick,
-		menuContainer,
-		removeClassBody,
 		handleOpen,
 		handleSeePass,
 		isOpen,
 		seePass,
-	} = LogicHeader();
+	} = LogicHeader(history);
 
 	const redirectRoute = (url) => {
 		history.push(url);
@@ -26,23 +24,31 @@ export const Header = ({ history, nbProduit }) => {
 	return (
 		<>
 			<div className="menu_sm">
-				<button className="btn" onClick={handleClick}>
+				<button className="btn" onClick={() => handleClick("")}>
 					<BiMenuAltRight />
 				</button>
 			</div>
-			<div className="menu_container" ref={menuContainer}>
+			<div className="menu_container">
 				<div className="menu_bg"></div>
 				<div className="menu_mobile">
 					<ul>
 						<li>
-							<Link to="/products" onClick={removeClassBody}>
-								Produits
-							</Link>
+							<p onClick={() => handleClick("/category/0")}>Chaussures</p>
 						</li>
 						<li>
-							<Link to="/contact" onClick={removeClassBody}>
-								Contact
-							</Link>
+							<p onClick={() => handleClick("/category/1")}>Chemises</p>
+						</li>
+						<li>
+							<p onClick={() => handleClick("/category/2")}>Montres</p>
+						</li>
+						<li>
+							<p onClick={() => handleClick("/category/3")}>Télephones</p>
+						</li>
+						<li>
+							<p onClick={() => handleClick("/products")}>Produits</p>
+						</li>
+						<li>
+							<p onClick={() => handleClick("/contact")}>Contact</p>
 						</li>
 					</ul>
 				</div>

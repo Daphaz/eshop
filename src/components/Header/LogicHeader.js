@@ -1,16 +1,15 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import animejs from "animejs";
 import useSize from "../../helpers/context";
 
-export default function LogicHeader() {
+export default function LogicHeader(history) {
 	const sizes = useSize();
 	const [toggle, setToggle] = useState(false);
 	const [seePass, setSeePass] = useState(true);
 	const [isOpen, setIsOpen] = useState(false);
 
-	const menuContainer = useRef(null);
-
-	const handleClick = () => {
+	const handleClick = (url) => {
+		const menuContainer = document.querySelector(".menu_container");
 		const scaleMenu = sizes.height >= 600 ? 85 : 60;
 		const tl = animejs.timeline({
 			duration: 1500,
@@ -18,7 +17,7 @@ export default function LogicHeader() {
 		});
 		if (!toggle) {
 			const activeContainer = () => {
-				menuContainer.current.style.display = "block";
+				menuContainer.style.display = "block";
 				document.body.classList.add("menu_open");
 			};
 			tl.add({
@@ -36,8 +35,11 @@ export default function LogicHeader() {
 			);
 		} else {
 			const inactiveContainer = () => {
-				menuContainer.current.style.display = "none";
+				menuContainer.style.display = "none";
 				document.body.classList.remove("menu_open");
+				if (url !== "") {
+					history.push(url);
+				}
 			};
 			tl.add({
 				targets: ".menu_bg",
@@ -56,10 +58,6 @@ export default function LogicHeader() {
 		setToggle(!toggle);
 	};
 
-	const removeClassBody = () => {
-		document.body.classList.remove("menu_open");
-	};
-
 	const handleOpen = () => {
 		setIsOpen(!isOpen);
 	};
@@ -70,8 +68,6 @@ export default function LogicHeader() {
 
 	return {
 		handleClick,
-		menuContainer,
-		removeClassBody,
 		handleOpen,
 		isOpen,
 		handleSeePass,
