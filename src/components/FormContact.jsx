@@ -65,7 +65,7 @@ export const FormContact = () => {
 				[field]: "",
 				touched: {
 					...state.touched,
-					[field]: { status: true, error: "minimum 3 charactères" },
+					[field]: { status: true, error: "minimum 3 caractères" },
 				},
 			});
 		} else {
