@@ -14,7 +14,7 @@ export const Dots = ({ images, activeIndex }) => {
 	return (
 		<div className="dots">
 			{images.map((img, i) => (
-				<Dot key={img} active={activeIndex === i} />
+				<Dot key={img + i} active={activeIndex === i} />
 			))}
 		</div>
 	);

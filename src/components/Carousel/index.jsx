@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Slide } from "./Slide";
 import { Slider } from "./Slider";
 import { Dots } from "./Dots";
@@ -17,7 +17,25 @@ export const Carousel = () => {
 		activeIndex: 0,
 		translate: 0,
 		transition: 0.45,
+		slides: [],
+		autoPlay: 3,
 	});
+
+	const autoPlayRef = useRef();
+
+	useEffect(() => {
+		autoPlayRef.current = nextSlide;
+	});
+
+	useEffect(() => {
+		const play = () => {
+			autoPlayRef.current();
+		};
+		if (state.autoPlay) {
+			const interval = setInterval(play, state.autoPlay * 1000);
+			return () => clearInterval(interval);
+		}
+	}, [state.autoPlay]);
 
 	const nextSlide = () => {
 		if (state.activeIndex === images.length - 1) {
@@ -51,21 +69,25 @@ export const Carousel = () => {
 
 	return (
 		<div className="carousel_container">
-			<div className="left_arrow" onClick={prevSlide}>
-				<AiOutlineArrowLeft />
-			</div>
 			<Slider
 				translate={state.translate}
 				transition={state.transition}
 				width={width * images.length}>
 				{images.map((img, i) => (
-					<Slide url_img={img.path} key={i} />
+					<Slide url_img={img.path} key={i + 1} />
 				))}
 			</Slider>
-			<div className="right_arrow" onClick={nextSlide}>
-				<AiOutlineArrowRight />
-			</div>
 			<Dots images={images} activeIndex={state.activeIndex} />
+			{!state.autoPlay && (
+				<>
+					<div className="left_arrow" onClick={prevSlide}>
+						<AiOutlineArrowLeft />
+					</div>
+					<div className="right_arrow" onClick={nextSlide}>
+						<AiOutlineArrowRight />
+					</div>
+				</>
+			)}
 		</div>
 	);
 };
