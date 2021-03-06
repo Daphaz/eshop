@@ -1,0 +1,55 @@
+.carousel_container {
+	width: 1280px;
+	height: 720px;
+	position: relative;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+.slider {
+	display: flex;
+	height: 100%;
+}
+
+.slide {
+	height: 100%;
+	width: 100%;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.left_arrow,
+.right_arrow {
+	cursor: pointer;
+	@extend %flex-center;
+	position: absolute;
+	z-index: 1;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background-color: $white;
+	border: 1px solid $primary;
+	color: $primary;
+	box-shadow: 1px 3px 8px rgba(0, 0, 0, 0.15);
+}
+.left_arrow {
+	left: 1rem;
+}
+.right_arrow {
+	right: 1rem;
+}
+.dot {
+	padding: 0.75rem;
+	margin-right: 5px;
+	cursor: pointer;
+	border-radius: 50%;
+}
+.dots {
+	position: absolute;
+	bottom: 1.2rem;
+	width: 100%;
+	@extend %flex-center;
+}
