@@ -6,79 +6,126 @@ import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 import useSize from "../../helpers/context";
 
 const images = [
-	{ path: "/img/banner1.jpeg" },
-	{ path: "/img/banner2.png" },
-	{ path: "/img/banner3.png" },
+	{ path: "/img/banner1.jpg" },
+	{ path: "/img/banner2.jpg" },
+	{ path: "/img/banner3.jpg" },
+	{ path: "/img/banner4.jpg" },
 ];
 
 export const Carousel = () => {
+	const firstSlide = images[0];
+	const secondSlide = images[1];
+	const lastSlide = images[images.length - 1];
 	const { width } = useSize();
 	const [state, setState] = useState({
 		activeIndex: 0,
 		translate: 0,
 		transition: 0.45,
-		slides: [],
-		autoPlay: 3,
+		_slides: [lastSlide, firstSlide, secondSlide],
+		autoPlay: null,
 	});
 
+	const { activeIndex, translate, transition, _slides, autoPlay } = state;
+
 	const autoPlayRef = useRef();
+	const transitionRef = useRef();
+	const resizeRef = useRef();
 
 	useEffect(() => {
 		autoPlayRef.current = nextSlide;
+		transitionRef.current = smoothTansition;
+		resizeRef.current = handleResize;
 	});
 
 	useEffect(() => {
 		const play = () => {
 			autoPlayRef.current();
 		};
-		if (state.autoPlay) {
-			const interval = setInterval(play, state.autoPlay * 1000);
-			return () => clearInterval(interval);
-		}
-	}, [state.autoPlay]);
 
-	const nextSlide = () => {
-		if (state.activeIndex === images.length - 1) {
-			return setState({
-				...state,
-				translate: 0,
-				activeIndex: 0,
-			});
+		const smooth = (e) => {
+			if (e.target.className.includes("slider")) {
+				transitionRef.current();
+			}
+		};
+
+		const resize = () => {
+			resizeRef.current();
+		};
+
+		let interval = null;
+
+		const transitionEnd = window.addEventListener("transitionend", smooth);
+		const onResize = window.addEventListener("resize", resize);
+
+		if (autoPlay) interval = setInterval(play, autoPlay * 1000);
+
+		return () => {
+			window.removeEventListener("transitionend", transitionEnd);
+			window.removeEventListener("resize", onResize);
+			if (autoPlay) {
+				clearInterval(interval);
+			}
+		};
+	}, [autoPlay]);
+
+	useEffect(() => {
+		if (transition === 0) setState({ ...state, transition: 0.45 });
+	}, [transition, state]);
+
+	const smoothTansition = () => {
+		let _slides = [];
+
+		if (activeIndex === images.length - 1) {
+			_slides = [images[images.length - 2], lastSlide, firstSlide];
+		} else if (activeIndex === 0) {
+			_slides = [lastSlide, firstSlide, secondSlide];
+		} else {
+			_slides = images.slice(activeIndex - 1, activeIndex + 2);
 		}
 		setState({
 			...state,
-			activeIndex: state.activeIndex + 1,
-			translate: (state.activeIndex + 1) * width,
+			_slides,
+			transition: 0,
+			translate: width,
+		});
+	};
+
+	const handleResize = () => {
+		setState({
+			...state,
+			translate: width,
+			transition: 0,
+		});
+	};
+
+	const nextSlide = () => {
+		setState({
+			...state,
+			activeIndex: activeIndex === images.length - 1 ? 0 : activeIndex + 1,
+			translate: width + translate,
 		});
 	};
 
 	const prevSlide = () => {
-		if (state.activeIndex === 0) {
-			return setState({
-				...state,
-				translate: (images.length - 1) * width,
-				activeIndex: images.length - 1,
-			});
-		}
 		setState({
 			...state,
-			activeIndex: state.activeIndex - 1,
-			translate: (state.activeIndex - 1) * width,
+			activeIndex: activeIndex === 0 ? images.length - 1 : activeIndex - 1,
+			translate: 0,
 		});
 	};
 
 	return (
 		<div className="carousel_container">
 			<Slider
-				translate={state.translate}
-				transition={state.transition}
-				width={width * images.length}>
-				{images.map((img, i) => (
+				translate={translate}
+				transition={transition}
+				width={width * _slides.length}>
+				{_slides.map((img, i) => (
 					<Slide url_img={img.path} key={i + 1} />
 				))}
 			</Slider>
-			<Dots images={images} activeIndex={state.activeIndex} />
-			{!state.autoPlay && (
+			<Dots images={images} activeIndex={activeIndex} />
+			{!autoPlay && (
 				<>
 					<div className="left_arrow" onClick={prevSlide}>
 						<AiOutlineArrowLeft />

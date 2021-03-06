@@ -5,7 +5,7 @@ const Dot = ({ active }) => {
 		<span
 			className="dot"
 			style={{
-				backgroundColor: active ? "var(--white-color)" : "var(--black-color)",
+				backgroundColor: active ? "var(--white-color)" : "var(--primary-color)",
 			}}></span>
 	);
 };

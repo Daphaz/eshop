@@ -1,10 +1,13 @@
 .categorie_home {
-	max-width: 300px;
 	margin-top: 2rem;
 	padding: 1rem;
 	background-color: white;
 	border-radius: 10px;
 	box-shadow: 2px 5px 18px rgba(0, 0, 0, 0.2);
+	@include media-max("1440px") {
+		margin: 0;
+		margin-bottom: 1rem;
+	}
 	@include media-max("800px") {
 		display: none;
 	}
@@ -17,6 +20,9 @@
 		display: flex;
 		justify-content: space-evenly;
 		flex-direction: column;
+		@include media-max("1440px") {
+			flex-direction: row;
+		}
 		li {
 			display: flex;
 			align-items: center;

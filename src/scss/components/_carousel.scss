@@ -1,9 +1,12 @@
 .carousel_container {
-	width: 1280px;
+	width: 100%;
+	max-width: 1280px;
 	height: 720px;
 	position: relative;
 	margin: 0 auto;
 	overflow: hidden;
+	box-shadow: 2px 5px 15px rgba(0, 0, 0, 0.15);
+	border-radius: 3px;
 }
 
 .slider {
@@ -24,7 +27,6 @@
 	cursor: pointer;
 	@extend %flex-center;
 	position: absolute;
-	z-index: 1;
 	top: 50%;
 	transform: translateY(-50%);
 	width: 40px;
