@@ -43,9 +43,9 @@ export const Carousel = () => {
 		};
 
 		const smooth = (e) => {
-			if (e.target.className.includes("slider")) {
-				transitionRef.current();
-			}
+			//if (e.target.className.includes("slider")) {
+			transitionRef.current();
+			//}
 		};
 
 		const resize = () => {
@@ -54,14 +54,14 @@ export const Carousel = () => {
 
 		let interval = null;
 
-		const transitionEnd = window.addEventListener("transitionend", smooth);
-		const onResize = window.addEventListener("resize", resize);
+		window.addEventListener("transitionend", smooth);
+		window.addEventListener("resize", resize);
 
 		if (autoPlay) interval = setInterval(play, autoPlay * 1000);
 
 		return () => {
-			window.removeEventListener("transitionend", transitionEnd);
-			window.removeEventListener("resize", onResize);
+			window.removeEventListener("transitionend", smooth);
+			window.removeEventListener("resize", resize);
 			if (autoPlay) {
 				clearInterval(interval);
 			}
@@ -70,7 +70,8 @@ export const Carousel = () => {
 
 	useEffect(() => {
 		if (transition === 0) setState({ ...state, transition: 0.45 });
-	}, [transition, state]);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [transition]);
 
 	const smoothTansition = () => {
 		let _slides = [];

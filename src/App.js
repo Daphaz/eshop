@@ -6,6 +6,7 @@ import Category from "./routes/category";
 import Detail from "./routes/products/Detail";
 import Contact from "./routes/contact";
 import Cart from "./routes/cart";
+import Search from "./routes/search";
 import FourOneFour from "./routes/FourOneFour";
 import { connect } from "react-redux";
 
@@ -122,6 +123,18 @@ const App = ({
 							nbProduit={nbProduit}
 							addQuantity={addQuantity}
 							removeQuantity={removeQuantity}
+							{...props}
+						/>
+					)}
+				/>
+				<Route
+					exact
+					path="/search"
+					component={(props) => (
+						<Search
+							nbProduit={nbProduit}
+							lesProduits={products}
+							addToCart={addToCart}
 							{...props}
 						/>
 					)}

@@ -68,7 +68,7 @@ export const Header = ({ history, nbProduit }) => {
 							</li>
 						</ul>
 						<div className="search-container">
-							<SearchBar />
+							<SearchBar history={history} />
 						</div>
 					</nav>
 					<div className="btn-container">
