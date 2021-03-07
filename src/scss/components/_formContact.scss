@@ -1,0 +1,63 @@
+.form_contact {
+	width: 100%;
+	max-width: 1920px;
+	margin: 0 auto;
+
+	.form_group {
+		position: relative;
+	}
+
+	.valid_form {
+		padding: 0.5rem 2rem;
+		font-size: 1.6rem;
+		font-weight: bold;
+		text-transform: uppercase;
+		background-color: $primary;
+		color: $white;
+		border-radius: 3px;
+		margin: 1rem auto;
+	}
+}
+.row_form {
+	@extend %flex-between;
+	flex-wrap: wrap;
+	.form_group {
+		width: 40%;
+		min-width: 200px;
+		@include media-max("550px") {
+			width: 100%;
+		}
+		select {
+			height: 40px;
+			background-color: transparent;
+			border: none;
+			border-bottom: 1px solid $black;
+			outline: none;
+			font-size: 1.2rem;
+			font-weight: 400;
+		}
+	}
+	.form_control {
+		width: 50%;
+		max-width: 850px;
+		min-width: 200px;
+		@include media-max("550px") {
+			width: 100%;
+		}
+		label {
+			font-size: 1.3rem;
+			font-weight: bold;
+		}
+	}
+}
+.form_validate {
+	position: absolute;
+	top: 0;
+	right: 0.5rem;
+}
+.form_error {
+	position: absolute;
+	color: $red;
+	bottom: 0.2rem;
+	pointer-events: none;
+}

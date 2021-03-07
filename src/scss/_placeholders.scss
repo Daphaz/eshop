@@ -1,5 +1,17 @@
+%container {
+	padding: 0 1rem;
+}
 %flex-center {
 	display: flex;
 	justify-content: center;
+	align-items: center;
+}
+%flex-between {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+%flex-align {
+	display: flex;
 	align-items: center;
 }

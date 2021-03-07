@@ -4,6 +4,9 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
 }
 html {
 	font-size: 16px;
@@ -13,6 +16,7 @@ body {
 	font-family: $rale;
 	background-color: $white;
 	color: $black;
+	overflow-x: hidden;
 }
 
 h1,
@@ -31,4 +35,83 @@ ul {
 a {
 	color: inherit;
 	text-decoration: none;
+}
+
+.container {
+	@extend %container;
+}
+.row {
+	@extend %flex-center;
+}
+.menu_open {
+	overflow-y: hidden;
+}
+.main_content {
+	padding-top: 4.6rem;
+	height: 100%;
+	min-height: calc(100vh - 13.25rem);
+	@include media-max("1440px") {
+		min-height: calc(100vh - 9.4rem);
+	}
+	@include media-max("500px") {
+		padding-top: 8.6rem;
+	}
+}
+
+/* Scroll Bar */
+* {
+	scrollbar-width: thin;
+	scrollbar-color: $primary $white;
+}
+body::-webkit-scrollbar {
+	width: 11px;
+}
+body {
+	scrollbar-width: thin;
+	scrollbar-color: $primary $white;
+}
+body::-webkit-scrollbar-track {
+	background: $white;
+}
+body::-webkit-scrollbar-thumb {
+	background-color: $primary;
+	border-radius: 6px;
+	border: 3px solid $white;
+}
+
+/*FourOneFour*/
+.fourOneFour {
+	height: 100vh;
+	@extend %flex-center;
+	flex-direction: column;
+	.row {
+		margin-bottom: 1rem;
+		h4 {
+			font-size: 2rem;
+			color: $primary;
+			line-height: 100%;
+		}
+		span {
+			display: block;
+			width: 5px;
+			height: 2rem;
+			border-radius: 5px;
+			margin: 0 0.5rem;
+			background-color: $black;
+		}
+		p {
+			font-size: 1.2rem;
+			font-weight: bold;
+		}
+		a {
+			font-size: 1.5rem;
+			font-weight: bold;
+			border: 1px solid $black;
+			padding: 0.2rem 0.5rem;
+			transition: border 0.1s ease-in-out;
+			&:hover {
+				border-color: transparent;
+			}
+		}
+	}
 }

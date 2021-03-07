@@ -1,0 +1,10 @@
+.title_main {
+	padding: 1.25rem 0;
+	font-size: 2rem;
+	font-weight: bold;
+	text-transform: uppercase;
+	color: $primary;
+	strong {
+		color: $yellow;
+	}
+}

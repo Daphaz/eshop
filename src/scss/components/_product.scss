@@ -1,0 +1,90 @@
+.product_card {
+	@extend %flex-between;
+	flex-direction: column;
+	border-radius: 10px;
+	box-shadow: 2px 2px 13px rgba(0, 0, 0, 0.25);
+	.product_img {
+		position: relative;
+		overflow: hidden;
+		border-top-left-radius: 5px;
+		border-top-right-radius: 5px;
+		height: 250px;
+		img {
+			cursor: pointer;
+			object-fit: cover;
+			transition: transform 0.3s ease;
+			&:hover {
+				transform: scale(1.2);
+			}
+		}
+		.promo_container {
+			@extend %flex-between;
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 100%;
+			color: $white;
+			font-size: 1.3rem;
+			font-weight: bold;
+			.product_promo-label {
+				background-color: $yellow;
+				padding: 0.2rem 0.5rem;
+			}
+			.product_promo-unit {
+				background-color: $black;
+				padding: 0.2rem;
+			}
+		}
+	}
+	.product_content {
+		&-title {
+			color: $primary;
+			padding: 0.25rem 0;
+			text-align: center;
+			font-size: 1.6rem;
+		}
+		&-price {
+			@extend %flex-center;
+			font-size: 1.8rem;
+			font-weight: bold;
+		}
+	}
+}
+.actionBtn {
+	@extend %flex-center;
+	padding: 0.5rem 0;
+	.action {
+		cursor: pointer;
+		@extend %flex-center;
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		border: 1px solid $primary;
+		font-size: 1.3rem;
+		color: $primary;
+		margin: 0 0.5rem;
+		background-color: $white;
+	}
+	button:disabled {
+		cursor: not-allowed;
+		background: $grey;
+	}
+}
+.second_price {
+	padding: 0 0.2rem;
+	position: relative;
+	margin-left: 1rem;
+	background-color: $red;
+	color: $white;
+	border-radius: 3px;
+	&::after {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		content: "";
+		width: 100%;
+		height: 2px;
+		background-color: $black;
+		transform: translate(-50%, -50%) rotate(-10deg);
+	}
+}

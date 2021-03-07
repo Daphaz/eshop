@@ -1,1 +1,8 @@
 @import "./variables", "./placeholders", "./mixin", "./layout";
+@import "./routes/home";
+@import "./components/btn", "./components/topHeader", "./components/header",
+	"./components/searchBar", "./components/title", "./components/productList",
+	"./components/product", "./components/productDetail", "./components/cartTable",
+	"./components/cartItem", "./components/cartFooter", "./components/footer",
+	"./components/modal", "./components/formContact", "./components/homeCategorie",
+	"./components/carousel", "./components/goOnTop";

@@ -1,0 +1,8 @@
+.home_top {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 2rem 0;
+	@include media-max("1440px") {
+		flex-direction: column;
+	}
+}

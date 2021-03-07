@@ -6,8 +6,3 @@
 
 ### Description
 >A classic e-commerce website, I would also like to work on animations, but especially the state management with Redux.
-
-#### Technologies
-
-Librairies | for what ?
------------|------------
