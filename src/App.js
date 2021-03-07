@@ -110,6 +110,18 @@ const App = ({
 				/>
 				<Route
 					exact
+					path="/category/:id/:id"
+					component={(props) => (
+						<Detail
+							lesProduits={products}
+							addToCart={addToCart}
+							nbProduit={nbProduit}
+							{...props}
+						/>
+					)}
+				/>
+				<Route
+					exact
 					path="/contact"
 					component={(props) => <Contact nbProduit={nbProduit} {...props} />}
 				/>
@@ -135,6 +147,18 @@ const App = ({
 							nbProduit={nbProduit}
 							lesProduits={products}
 							addToCart={addToCart}
+							{...props}
+						/>
+					)}
+				/>
+				<Route
+					exact
+					path="/search/:id"
+					component={(props) => (
+						<Detail
+							lesProduits={products}
+							addToCart={addToCart}
+							nbProduit={nbProduit}
 							{...props}
 						/>
 					)}
